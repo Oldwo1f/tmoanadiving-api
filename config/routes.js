@@ -12,7 +12,7 @@ module.exports.routes = {
 
   '/': { view: 'pages/homepage' },
 
-
+  'GET /api/v1/addfirstadmin': { action: 'administrator/add-first-admin' },
   // Auth
   'POST /api/v1/auth/login': { action: 'auth/login' },
   'POST /api/v1/auth/loginadmin': { action: 'auth/login-admin' },
