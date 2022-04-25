@@ -1,0 +1,55 @@
+###
+POST http://localhost:1337/api/v1/user
+Content-Type: application/json
+
+{
+	"firstName": "Alexisf",
+	"lastName": "Momcilovic",
+	"emailAddress": "alexissggggsmofffmcilovic@gmail.com",
+	"password": "Alexis09",
+	"role":"admin"
+            
+}
+### 
+GET http://localhost:1337/api/v1/users
+
+### 
+GET http://localhost:1337/api/v1/user/61c8ecab6cda50680507a961
+###
+PUT http://localhost:1337/api/v1/user/61c8e97a86e49d66074e2aff
+Content-Type: application/json
+
+{
+	"datas":{
+	"firstName": "ALEXIS2",
+	"lastName": "MOMCI2"
+	}
+}
+
+###
+PUT http://localhost:1337/api/v1/user/61c8e97a86e49d66074e2aff
+Content-Type: application/json
+
+{
+	"datas":{
+	"firstName": "ALEXIS2",
+	"lastName": "MOMCI2"
+	}
+}
+###
+POST http://localhost:1337/api/v1/auth/login
+Content-Type: application/json
+
+{
+	"emailAddress": "aa@aa.aa",
+	"password": "xmhkgm"
+}
+###
+GET http://localhost:1337/api/v1/auth/user
+Content-Type: application/json
+Authorization: Bearer eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJpc3MiOiJsb2NhbGhvc3QiLCJkYXRhIjp7InJvbGUiOiJhZG1pbiJ9LCJzdWIiOiI2MjFhNmY3NDQ1MWJhZDE3ZDdkYTlhZWMiLCJpYXQiOjE2NDYwNjM1NjM0MTQsImV4cCI6MTY0NzI3MzE2MzQxNH0.OFWMNc-ksQYC-8ErRPSnoLrM6cTO9mc0mi61ifBacB4
+
+###
+POST http://localhost:1337/api/v1/jeu/addImage/6238dcba6cabc33b4282fedc
+Content-Type: application/json
+
