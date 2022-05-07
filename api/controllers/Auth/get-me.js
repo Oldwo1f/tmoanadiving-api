@@ -39,9 +39,10 @@ module.exports = {
 		console.log('CONTROLLER: Auth | get-me ==> ');
 
 		// const userId = '61c8f96b22230d6ff463aa8a'
-		const userId = this.req.session.userId
+		const userId = this.req.user
 
-		console.log('this.req.user');
+		// console.log('this.req', this.req);
+		// console.log('this.req.user', this.req.user);
 		console.log(userId);
 
 
