@@ -9,7 +9,7 @@ module.exports = async function serveImage(req, res) {
 
 	console.log('serveimage')
 	console.log(req.params)
-	const filePath = '/var/www/DEV/SERVER/public/uploads/original/' + req.params.path
+	const filePath = sails.config.custom.appPath + '/public/uploads/original/' + req.params.path
 	// +req.params.size+'/'
 	// sails.log(filePath);
 	const stat = fs.statSync(filePath)
