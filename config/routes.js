@@ -44,6 +44,7 @@ module.exports.routes = {
 
   'GET /fapi/v1/jeux': { action: 'jeu/get-all-f' },
   'GET /fapi/v1/jeu/:name': { action: 'jeu/get-one-by-name-f' },
+  'POST /fapi/v1/jeu/inscription/:id': { action: 'jeu/inscription' },
   'GET /api/v1/jeu': { action: 'jeu/get-all' },
   'GET /api/v1/jeux': { action: 'jeu/get-all' },
   'GET /api/v1/jeu/:id': { action: 'jeu/get-one' },
@@ -51,7 +52,7 @@ module.exports.routes = {
   'DELETE /api/v1/jeu/:id': { action: 'jeu/delete-one' },
   'POST /api/v1/jeu': { action: 'jeu/add' },
   'POST /api/v1/jeu/:idjeu/addImage': { action: 'jeu/add-image' },
-
+  'POST /api/v1/jeu/:idjeu/addLogo': { action: 'jeu/add-logo' },
   // Partenaire
 
   'GET /fapi/v1/partenaires': { action: 'partenaire/get-all-f' },
@@ -67,6 +68,7 @@ module.exports.routes = {
 
   // IMAGE
   'GET /api/v1/image/:path': { action: 'image/serve-image', skipAssets: false },
+  'GET /fapi/v1/image/:path': { action: 'image/serve-image', skipAssets: false },
   'DELETE /api/v1/image/:id': { action: 'image/delete-one', skipAssets: false },
 
   // 'POST /api/v1/auth/login': { action: 'login/login' },

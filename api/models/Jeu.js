@@ -33,7 +33,15 @@ module.exports = {
 		images: {
 			collection: 'image',
 			via: 'jeu'
-		}
+		},
+		inscrits: {
+			collection: 'inscrit',
+			via: 'jeu'
+		},
+		logos: {
+			collection: 'image',
+			via: 'jeulogo'
+		},
 
 
 	},

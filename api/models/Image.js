@@ -25,6 +25,9 @@ module.exports = {
 		},
 		partenairelogo: {
 			model: 'partenaire'
+		},
+		jeulogo: {
+			model: 'jeu'
 		}
 	},
 
