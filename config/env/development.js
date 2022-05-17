@@ -52,7 +52,7 @@ module.exports = {
 			host: 'localhost',
 			port: 40061,
 			database: 'MADMIN',
-			authenticationDatabase: 'admin'
+			authenticationDatabase: 'admin',
 			user: 'creapassionprod',
 			password: 'KGZP2898_WrR',
 
