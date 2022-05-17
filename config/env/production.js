@@ -54,6 +54,7 @@ module.exports = {
       database: 'MADMIN',
       user: 'creapassionprod',
       password: 'KGZP2898_WrR',
+      authenticationDatabase: 'admin'
       // adapter: 'sails-mysql',
       // url: 'mysql://user:password@host:port/database',
       //--------------------------------------------------------------------------
@@ -89,6 +90,7 @@ module.exports = {
     host: 'localhost',
     port: 40061,
     database: 'MADMIN',
+    authenticationDatabase: 'admin'
   },
 
   models: {

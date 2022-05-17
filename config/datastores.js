@@ -55,6 +55,7 @@ module.exports.datastores = {
     database: 'MADMIN',
     user: 'creapassionprod',
     password: 'KGZP2898_WrR',
+    authenticationDatabase: 'admin'
   },
 
 
