@@ -47,6 +47,13 @@ module.exports = {
     *                                                                          *
     ***************************************************************************/
     default: {
+      adapter: 'sails-mongo',
+      // url: 'mysql://user:password@host:port/database',
+      host: 'localhost',
+      port: 40061,
+      database: 'MADMIN',
+      user: 'creapassionprod',
+      password: 'KGZP2898_WrR',
       // adapter: 'sails-mysql',
       // url: 'mysql://user:password@host:port/database',
       //--------------------------------------------------------------------------
