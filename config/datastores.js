@@ -52,12 +52,11 @@ module.exports.datastores = {
     // url: 'mysql://user:password@host:port/database',
     host: 'localhost',
     port: 40061,
+    database: 'MADMIN',
     auth: {
       user: 'creapassionprod',
       password: 'KGZP2898_WrR',
     },
-    database: 'MADMIN'
-
   },
 
 
