@@ -54,7 +54,7 @@ module.exports = {
       database: 'MADMIN',
       user: 'creapassionprod',
       password: 'KGZP2898_WrR',
-      authenticationDatabase: 'authSource'
+      authSource: 'admin'
       // adapter: 'sails-mysql',
       // url: 'mysql://user:password@host:port/database',
       //--------------------------------------------------------------------------
