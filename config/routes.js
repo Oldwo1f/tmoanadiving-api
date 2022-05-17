@@ -52,6 +52,8 @@ module.exports.routes = {
   'DELETE /api/v1/jeu/:id': { action: 'jeu/delete-one' },
   'POST /api/v1/jeu': { action: 'jeu/add' },
   'POST /api/v1/jeu/:idjeu/addImage': { action: 'jeu/add-image' },
+  'POST /api/v1/jeu/:idjeu/addImagefin': { action: 'jeu/add-image-fin' },
+  'POST /api/v1/jeu/:idjeu/addImagegagnant': { action: 'jeu/add-image-gagnant' },
   'POST /api/v1/jeu/:idjeu/addLogo': { action: 'jeu/add-logo' },
   // Partenaire
 

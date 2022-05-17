@@ -48,12 +48,14 @@ module.exports = {
 		delete datas.images
 		delete datas.logos
 		delete datas.inscrits
+		delete datas.imagesfin
+		delete datas.imagesgagnant
 		console.log('datas', datas);
 
 
 		var result = await Jeu.updateOne(id).set(datas)
 			.intercept({ name: 'UsageError' }, 'invalid');
-		var record = await Jeu.findOne(id).populate('images').populate('logos').populate('inscrits')
+		var record = await Jeu.findOne(id).populate('images').populate('logos').populate('inscrits').populate('imagesfin').populate('imagesgagnant')
 
 		console.log(record);
 

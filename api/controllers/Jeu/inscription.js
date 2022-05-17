@@ -47,11 +47,11 @@ module.exports = {
 		// 	description: 'Database Error',
 		// },
 
-		// nameAlreadyInUse: {
-		// 	responseType: 'custom',
-		// 	statusCode: 409,
-		// 	description: 'The provided Name is already in use.',
-		// },
+		emailAlreadyInUse: {
+			responseType: 'custom',
+			statusCode: 409,
+			description: 'The provided Name is already in use.',
+		},
 
 	},
 
@@ -65,6 +65,17 @@ module.exports = {
 		if (this.req.body.gender == null) {
 			this.req.body.gender = ''
 		}
+		const Find = await Jeu.findOne(id).populate('inscrits')
+		// console.log('Find', Find);
+
+		if (Find.inscrits.length) {
+			const founded = _.find(Find.inscrits, { email: this.req.body.email })
+
+			console.log('founded', founded);
+			throw 'emailAlreadyInUse'
+		}
+
+
 
 		const inscrit = await Inscrit.create(this.req.body).fetch()
 

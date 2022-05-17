@@ -41,7 +41,7 @@ module.exports = {
 
 
 
-		var record = await Jeu.findOne(id).populate('images').populate('logos').populate('inscrits')
+		var record = await Jeu.findOne(id).populate('images').populate('logos').populate('inscrits').populate('imagesfin').populate('imagesgagnant')
 			.intercept({ name: 'UsageError' }, 'invalid')
 
 

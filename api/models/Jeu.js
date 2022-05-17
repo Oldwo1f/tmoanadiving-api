@@ -26,6 +26,7 @@ module.exports = {
 		shareText: { type: 'string' },
 		finalContent: { type: 'string' },
 		annonceur: { type: 'string' },
+		urlannonceur: { type: 'string' },
 		options: { type: 'json' },
 		// smsauto: { type: 'boolean', defaultsTo: false },
 		// textsms: { type: 'string' },
@@ -45,6 +46,14 @@ module.exports = {
 		logos: {
 			collection: 'image',
 			via: 'jeulogo'
+		},
+		imagesfin: {
+			collection: 'image',
+			via: 'jeuimagesfin'
+		},
+		imagesgagnant: {
+			collection: 'image',
+			via: 'jeuimagesgagnant'
 		},
 
 

@@ -28,6 +28,12 @@ module.exports = {
 		},
 		jeulogo: {
 			model: 'jeu'
+		},
+		jeuimagesfin: {
+			model: 'jeu'
+		},
+		jeuimagesgagnant: {
+			model: 'jeu'
 		}
 	},
 
