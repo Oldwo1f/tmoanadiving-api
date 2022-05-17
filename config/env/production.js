@@ -52,10 +52,8 @@ module.exports = {
       host: 'localhost',
       port: 40061,
       database: 'MADMIN',
-      auth: {
-        user: 'creapassionprod',
-        password: 'KGZP2898_WrR',
-      }
+      user: 'creapassionprod',
+      password: 'KGZP2898_WrR',
       // adapter: 'sails-mysql',
       // url: 'mysql://user:password@host:port/database',
       //--------------------------------------------------------------------------
