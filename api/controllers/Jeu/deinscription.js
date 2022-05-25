@@ -5,10 +5,10 @@ const { setMaxListeners } = require('process');
 module.exports = {
 
 
-	friendlyName: 'Inscription',
+	friendlyName: 'DeInscription',
 
 
-	description: 'Add a new Inscription',
+	description: 'Add a new deInscription',
 
 	inputs: {
 
@@ -58,36 +58,19 @@ module.exports = {
 
 	fn: async function ({ id, data }) {
 
-		console.log('Inscription', id);
+		console.log('deInscription', id);
 		console.log(data);
 		console.log(this.req.body)
 
-		if (this.req.body.gender == null) {
-			this.req.body.gender = ''
-		}
-		const Find = await Jeu.findOne(id).populate('inscrits')
-		// console.log('Find', Find);
-
-		console.log('Find.inscrits.length', Find.inscrits.length);
-		console.log('Find.inscrits', Find.inscrits);
-		if (Find.inscrits.length) {
-			const founded = _.find(Find.inscrits, { email: this.req.body.email })
-
-			console.log('founded', founded);
-			if (founded) {
-				throw 'emailAlreadyInUse'
-
-			}
-		}
 
 
 
-		const inscrit = await Inscrit.create(this.req.body).fetch()
+		const deinscrit = await Inscrit.create(this.req.body).fetch()
 
 		// console.log('createdImage ', createdImage);
-		const result = await Jeu.addToCollection(id, 'inscrits').members([inscrit.id])
+		const result = await Jeu.addToCollection(id, 'deinscrits').members([deinscrit.id])
 		// createdImage.jeulogo = idjeu
-		return inscrit
+		return deinscrit
 
 
 	}

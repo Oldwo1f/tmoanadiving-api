@@ -29,50 +29,6 @@ module.exports = {
 	* (https://sailsjs.com/config/datastores)                                 *
 	*                                                                         *
 	**************************************************************************/
-	datastores: {
-
-		/***************************************************************************
-		*                                                                          *
-		* Configure your default production database.                              *
-		*                                                                          *
-		* 1. Choose an adapter:                                                    *
-		*    https://sailsjs.com/plugins/databases                                 *
-		*                                                                          *
-		* 2. Install it as a dependency of your Sails app.                         *
-		*    (For example:  npm install sails-mysql --save)                        *
-		*                                                                          *
-		* 3. Then set it here (`adapter`), along with a connection URL (`url`)     *
-		*    and any other, adapter-specific customizations.                       *
-		*    (See https://sailsjs.com/config/datastores for help.)                 *
-		*                                                                          *
-		***************************************************************************/
-		default: {
-			adapter: 'sails-mongo',
-			// url: 'mysql://user:password@host:port/database',
-			host: 'localhost',
-			port: 40061,
-			database: 'MADMIN',
-			// authSource: 'admin',
-			// user: 'creapassionprod',
-			// password: 'KGZP2898_WrR',
-
-
-			/****************************************************************************
-			*                                                                           *
-			* More adapter-specific options                                             *
-			*                                                                           *
-			* > For example, for some hosted PostgreSQL providers (like Heroku), the    *
-			* > extra `ssl: true` option is mandatory and must be provided.             *
-			*                                                                           *
-			* More info:                                                                *
-			* https://sailsjs.com/config/datastores                                     *
-			*                                                                           *
-			****************************************************************************/
-			// ssl: true,
-
-		},
-
-	},
 
 
 
@@ -338,7 +294,8 @@ module.exports = {
 	* this, just try deploying without setting it and see if it works.)       *
 	*                                                                         *
 	***************************************************************************/
-	port: 40063,
+	// port: 40063,
+	port: 1337,
 
 
 

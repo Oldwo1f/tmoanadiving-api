@@ -1,7 +1,7 @@
 module.exports = {
 
 
-	friendlyName: 'Get one jeu by name',
+	friendlyName: 'Get one jeu by id',
 
 
 	description: 'Fetch jeu by id and retrieve it',
@@ -12,10 +12,10 @@ module.exports = {
 
 
 	inputs: {
-		name: {
+		id: {
 			required: true,
 			type: 'string',
-			description: 'The name of jeu',
+			description: 'The id of jeu',
 		}
 
 	},
@@ -35,13 +35,13 @@ module.exports = {
 	},
 
 
-	fn: async function ({ name }) {
+	fn: async function ({ id }) {
 		console.log('CONTROLLER: Jeu | get-one-by-name-f ==> ', name);
 
 
 
 
-		var record = await Jeu.findOne({ where: { 'url': name } }).populate('images').populate('partenaire').populate('inscrits').populate('logos').populate('imagesgagnant').populate('imagesfin')
+		var record = await Jeu.findOne(id).populate('images').populate('partenaire').populate('inscrits').populate('logos').populate('imagesgagnant').populate('imagesfin')
 			.intercept({ name: 'UsageError' }, 'invalid')
 
 		// try {

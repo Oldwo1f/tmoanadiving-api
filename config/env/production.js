@@ -50,7 +50,7 @@ module.exports = {
       adapter: 'sails-mongo',
       // url: 'mysql://user:password@host:port/database',
       host: 'localhost',
-      port: 40061,
+      port: 1337,
       database: 'MADMIN',
       // user: 'creapassionprod',
       // password: 'KGZP2898_WrR',
@@ -82,15 +82,6 @@ module.exports = {
 
     },
 
-  },
-
-  uploads: {
-    adapter: 'sails-mongo',
-    // url: 'mysql://user:password@host:port/database',
-    host: 'localhost',
-    port: 40061,
-    database: 'MADMIN',
-    authenticationDatabase: 'admin'
   },
 
   models: {

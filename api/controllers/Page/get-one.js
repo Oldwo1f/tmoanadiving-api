@@ -1,10 +1,12 @@
+
+
 module.exports = {
 
 
-	friendlyName: 'Get one jeu',
+	friendlyName: 'Get one Page',
 
 
-	description: 'Fetch jeu by id and retrieve it',
+	description: 'Fetch Partenaire by id and retrieve it',
 
 
 	extendedDescription:
@@ -15,7 +17,7 @@ module.exports = {
 		id: {
 			required: true,
 			type: 'string',
-			description: 'The id of jeu',
+			description: 'The id of Option',
 		}
 
 	},
@@ -24,7 +26,7 @@ module.exports = {
 	exits: {
 
 		success: {
-			description: 'Voici votre utilisateur'
+			description: 'Voici votre Page'
 		},
 
 		invalid: {
@@ -36,12 +38,12 @@ module.exports = {
 
 
 	fn: async function ({ id }) {
-		console.log('CONTROLLER: Jeu | get-one ==> ', id);
+		console.log('CONTROLLER: Page | get-one ==> ', id);
 
 
 
 
-		var record = await Jeu.findOne(id).populate('images').populate('logos').populate('inscrits').populate('deinscrits').populate('imagesfin').populate('imagesgagnant')
+		var record = await Page.findOne(id)
 			.intercept({ name: 'UsageError' }, 'invalid')
 
 

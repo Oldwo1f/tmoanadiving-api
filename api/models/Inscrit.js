@@ -9,7 +9,10 @@ module.exports = {
 	attributes: {
 
 
-		email: {
+		desinscrit: {
+			defaultsTo: false,
+			type: 'boolean'
+		}, email: {
 			type: 'string',
 			required: true,
 			unique: true,
@@ -52,6 +55,9 @@ module.exports = {
 		},
 
 		jeu: {
+			model: 'jeu'
+		},
+		jeud: {
 			model: 'jeu'
 		}
 

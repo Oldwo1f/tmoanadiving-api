@@ -20,6 +20,15 @@ module.exports.routes = {
   'GET /api/v1/auth/user': { action: 'auth/get-me' },
 
 
+  // PAGES
+
+  'GET /api/v1/pages': { action: 'page/get-all' },
+  'GET /api/v1/page/:id': { action: 'page/get-one' },
+  'PATCH /api/v1/page/:id': { action: 'page/update' },
+  'DELETE /api/v1/page/:id': { action: 'page/delete-one' },
+  'POST /api/v1/page': { action: 'page/add' },
+  'GET /fapi/v1/page/:url': { action: 'page/get-one-by-name-f' },
+  'GET /fapi/v1/jeu/fetchJeuxGagnant': { action: 'jeu/get-all-gagnants-f' },
   // USER
 
   'GET /api/v1/users': { action: 'user/get-all' },
@@ -44,7 +53,9 @@ module.exports.routes = {
 
   'GET /fapi/v1/jeux': { action: 'jeu/get-all-f' },
   'GET /fapi/v1/jeu/:name': { action: 'jeu/get-one-by-name-f' },
+  // 'GET /fapi/v1/jeu/:name': { action: 'jeu/get-one-by-name-f' },
   'POST /fapi/v1/jeu/inscription/:id': { action: 'jeu/inscription' },
+  'POST /fapi/v1/jeu/deinscription/:id': { action: 'jeu/deinscription' },
   'GET /api/v1/jeu': { action: 'jeu/get-all' },
   'GET /api/v1/jeux': { action: 'jeu/get-all' },
   'GET /api/v1/jeu/:id': { action: 'jeu/get-one' },

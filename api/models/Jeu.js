@@ -12,6 +12,7 @@ module.exports = {
 		url: { type: 'string' },
 		description: { type: 'string' },
 		urlReglement: { type: 'string' },
+		reglement: { type: 'string' },
 		valeur: { type: 'number', defaultsTo: 0 },
 		dateLancement: { type: 'number' },
 		dateCloture: { type: 'number' },
@@ -42,6 +43,10 @@ module.exports = {
 		inscrits: {
 			collection: 'inscrit',
 			via: 'jeu'
+		},
+		deinscrits: {
+			collection: 'inscrit',
+			via: 'jeud'
 		},
 		logos: {
 			collection: 'image',

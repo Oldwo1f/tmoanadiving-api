@@ -11,7 +11,7 @@ module.exports = {
 		filename: { type: 'string', required: true },
 		name: { type: 'string', required: true },
 		ext: { type: 'string', required: true },
-		alt: { type: 'text', defaultsTo: '' },
+		alt: { type: 'string', defaultsTo: '' },
 		rank: { type: 'number' },
 		size: { type: 'number' },
 		width: { type: 'number' },

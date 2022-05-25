@@ -54,10 +54,10 @@ module.exports = {
 		console.log('archive: ', archive);
 
 		if (archive) {
-			var record = await Jeu.find({ status: 'archive' }).limit(limit).skip((page - 1) * (limit - 1))
+			var record = await Jeu.find({ status: 'archive' }).limit(limit).skip((page - 1) * (limit - 1)).populate('inscrits')
 				.intercept({ name: 'UsageError' }, 'invalid')
 		} else {
-			var record = await Jeu.find({ status: { '!=': 'archive' } }).limit(limit).skip((page - 1) * (limit - 1))
+			var record = await Jeu.find({ status: { '!=': 'archive' } }).limit(limit).skip((page - 1) * (limit - 1)).populate('inscrits')
 				.intercept({ name: 'UsageError' }, 'invalid')
 		}
 
