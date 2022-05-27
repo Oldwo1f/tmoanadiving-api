@@ -53,8 +53,8 @@ module.exports.datastores = {
     host: 'localhost',
     port: 40063,
     database: 'MADMIN',
-    // user: 'creapassionprod',
-    // password: 'KGZP2898_WrR',
+    user: 'creapassionprod',
+    password: 'KGZP2898_WrR',
     // authSource: 'admin'
   },
 
