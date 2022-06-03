@@ -59,6 +59,7 @@ module.exports.routes = {
   'GET /api/v1/jeu': { action: 'jeu/get-all' },
   'GET /api/v1/jeux': { action: 'jeu/get-all' },
   'GET /api/v1/jeu/:id': { action: 'jeu/get-one' },
+  'GET /api/v1/jeu/tirage/:id': { action: 'jeu/tirage' },
   'PATCH /api/v1/jeu/:id': { action: 'jeu/update' },
   'DELETE /api/v1/jeu/:id': { action: 'jeu/delete-one' },
   'POST /api/v1/jeu': { action: 'jeu/add' },

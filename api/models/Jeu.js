@@ -21,6 +21,7 @@ module.exports = {
 		status: { type: 'string', isIn: ['draft', 'actif', 'inactif', 'archive'], defaultsTo: 'draft' },
 		winnerlastname: { type: 'string' },
 		winnerfirstname: { type: 'string' },
+		winneremail: { type: 'string' },
 		winnercity: { type: 'string' },
 		winnerimageUrl: { type: 'string' },
 		huissiertext: { type: 'string' },
