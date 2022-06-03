@@ -32,7 +32,7 @@ module.exports = {
 	},
 
 
-	fn: async function ({ id, datas }) {
+	fn: async function ({ id }) {
 		console.log('CONTROLLER: Jeu | tirage ==> ', id);
 
 
