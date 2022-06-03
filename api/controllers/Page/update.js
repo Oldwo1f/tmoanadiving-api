@@ -46,8 +46,8 @@ module.exports = {
 	fn: async function ({ id, datas }) {
 		console.log('CONTROLLER: Page | update ==> ', id);
 
-		// console.log('datas', datas);
-		// delete datas.images
+		console.log('datas', datas);
+		delete datas.deinscrits
 		// delete datas.logos
 		// console.log('datas', datas);
 
