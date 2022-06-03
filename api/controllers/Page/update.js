@@ -47,7 +47,7 @@ module.exports = {
 		console.log('CONTROLLER: Page | update ==> ', id);
 
 		console.log('datas', datas);
-		delete datas.deinscrits
+		// delete datas.images
 		// delete datas.logos
 		// console.log('datas', datas);
 
