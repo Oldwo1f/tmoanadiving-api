@@ -1,3 +1,4 @@
+
 module.exports = {
 
 
@@ -47,24 +48,38 @@ module.exports = {
 
 
 
-		var random = Math.floor(Math.random() * inscrits.length)
+		var random = Math.floor(Math.random() * max)
 
-		var gagnant = inscrits.splice(random, 1)
-		console.log(gagnant);
-		const datas = {
-			winnerfirstname: gagnant[0].firstName,
-			winnerlastname: gagnant[0].lastName,
-			winnercity: gagnant[0].city,
-			winneremail: gagnant[0].email,
+		var gagnantList = inscrits.slice(random, random + 1)
+		console.log('gagnantList', gagnantList);
+		var gagnant = gagnantList[0]
+		console.log(gagnant.reponse);
+		if (result.questionGame == "actif") {
+			while (gagnant.reponse != result.bonneRep) {
+				// console.log('bonne:', result.bonneRep);
+				console.log('while');
+				random = Math.floor(Math.random() * max)
+				gagnantList = inscrits.slice(random, random + 1)
+				console.log('gagnantList', gagnantList);
+				gagnant = gagnantList[0]
+				console.log('new gagnant:', gagnant);
+			}
 		}
-		console.log('datas', datas);
+		// console.log(gagnant);
+		const datas = {
+			winnerfirstname: gagnant.firstName,
+			winnerlastname: gagnant.lastName,
+			winnercity: gagnant.city,
+			winneremail: gagnant.email,
+		}
+		// console.log('datas', datas);
 		// var record = await Jeu.findOne(id).populate('images').populate('logos').populate('deinscrits').populate('inscrits').populate('imagesfin').populate('imagesgagnant')
 		var result = await Jeu.updateOne(id).set(datas)
 			.intercept({ name: 'UsageError' }, 'invalid');
 		// console.log(record);
 		console.log(gagnant);
 
-		return gagnant[0]
+		return gagnant
 
 	}
 

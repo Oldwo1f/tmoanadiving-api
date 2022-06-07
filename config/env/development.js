@@ -294,8 +294,8 @@ module.exports = {
 	* this, just try deploying without setting it and see if it works.)       *
 	*                                                                         *
 	***************************************************************************/
-	port: 40063,
-	// port: 1337,
+	// port: 40063,
+	port: 1337,
 
 
 

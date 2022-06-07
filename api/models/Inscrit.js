@@ -12,7 +12,11 @@ module.exports = {
 		desinscrit: {
 			defaultsTo: false,
 			type: 'boolean'
-		}, email: {
+		},
+		reponse: {
+			type: 'string'
+		},
+		email: {
 			type: 'string',
 			required: true,
 			unique: true,
