@@ -29,7 +29,7 @@ module.exports.custom = {
 
   fromEmailAddress: 'noreply@madmin.com',
   fromName: 'The MADMIN Team',
-  appPath: '/var/www/api.creapassionprod.com',
+  appPath: '/var/www/DEV/Temoana/SERVER',
   // appPath: '/var/www/DEV/SERVER',
 
   internalEmailAddress: 'alexismomcilovic@gmail.com',

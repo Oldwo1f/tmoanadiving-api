@@ -1,10 +1,9 @@
 module.exports = {
 
 
-	friendlyName: 'Get one user',
+	friendlyName: 'Get one client by idclient',
 
 
-	description: 'Fetch user by id and retrieve it',
 
 
 	extendedDescription:
@@ -15,7 +14,7 @@ module.exports = {
 		id: {
 			required: true,
 			type: 'string',
-			description: 'The id of user',
+			description: 'The idclient of User',
 		}
 
 	},
@@ -24,7 +23,7 @@ module.exports = {
 	exits: {
 
 		success: {
-			description: 'Voici votre utilisateur'
+			description: 'Voici votre Partenaire'
 		},
 
 		invalid: {
@@ -36,13 +35,15 @@ module.exports = {
 
 
 	fn: async function ({ id }) {
-		console.log('CONTROLLER: User | get-one ==> ', id);
+		console.log('CONTROLLER: User | get-one-byid ==> ', id);
 
 
 
 
-		var record = await User.findOne(id).populate('passacheter')
+		var record = await User.findOne({ idclient: id }).populate('passacheter')
 			.intercept({ name: 'UsageError' }, 'invalid')
+
+		console.log(record);
 
 
 		return record

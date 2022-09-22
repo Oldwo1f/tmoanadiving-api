@@ -28,19 +28,41 @@ module.exports = {
 		},
 		firstName: {
 			type: 'string',
-			example: 'Frida Kahlo de Rivera',
-			description: 'The user\'s full name.',
 		},
 		lastName: {
 			type: 'string',
-			example: 'Frida Kahlo de Rivera',
-			description: 'The user\'s full name.',
 		},
-		role: {
+		birthDate: {
 			type: 'string',
-			example: 'user',
-			description: 'The user\'s role.',
-		}
+		},
+		country: {
+			type: 'string',
+		},
+		phone: {
+			type: 'string',
+		},
+		level: {
+			type: 'string',
+		},
+		firstName2: {
+			type: 'string',
+		},
+		lastName2: {
+			type: 'string',
+		},
+		birthDate2: {
+			type: 'string',
+		},
+		country2: {
+			type: 'string',
+		},
+		phone2: {
+			type: 'string',
+		},
+		level2: {
+			type: 'string',
+		},
+
 
 	},
 
@@ -73,55 +95,85 @@ module.exports = {
 	},
 
 
-	fn: async function ({ emailAddress, firstName, lastName, role }) {
+	fn: async function ({ emailAddress, firstName, lastName, birthDate, country, phone, level, firstName2, lastName2, birthDate2, country2, phone2, level2 }) {
 
 
 		const { customAlphabet } = require('nanoid')
-		const nanoid = customAlphabet('abcdefghijklmnopqrstuvwxyz', 6)
+		const nanoid = customAlphabet('1234567890', 6)
 		password = nanoid()
+		var QRCode = require('qrcode')
 		console.log('email: ', emailAddress);
 		console.log('firstName: ', firstName);
 		console.log('lastName: ', lastName);
+		console.log('lastName2: ', lastName2);
+		console.log('country: ', country);
 		var newEmailAddress = emailAddress.toLowerCase();
 
+		var idclient = firstName.slice(0, 1) + lastName.slice(0, 1) + nanoid();
+		idclient = idclient.toUpperCase();
+		console.log('idclient=', idclient);
+
+		var optsQR = {
+			errorCorrectionLevel: 'H',
+			type: 'image/png',
+			quality: 0.9,
+			width: 250,
+			margin: 1,
+			color: {
+				light: "#28A1C5",
+				dark: "#002D41"
+			}
+		}
+		const that = this;
+		let qrcode = '';
+		await QRCode.toDataURL(idclient, optsQR, function (err, url) {
+			console.log('url = ', url)
+			qrcode = url
+		})
+
+		console.log('qrcode', qrcode);
+		await new Promise(resolve => setTimeout(resolve, 500));
+		console.log('qrcode', qrcode);
 		// Build up data for the new user record and save it to the database.
 		// (Also use `fetch` to retrieve the new ID so that we can use it below.)
+		// var newUserRecord = await User.create({ emailAddress: newEmailAddress, password: password }).fetch()
 		var newUserRecord = await User.create(_.extend({
 			fullName: firstName + ' ' + lastName,
 			firstName: firstName,
+			qrcode: qrcode,
 			lastName: lastName,
-			role: role,
+			birthDate: birthDate,
+			idclient: idclient,
+			country: country,
+			phone: phone,
+			level: level,
+			firstName2: firstName2,
+			lastName2: lastName2,
+			birthDate2: birthDate2,
+			country2: country2,
+			phone2: phone2,
+			level2: level2,
+			role: 'user',
 			status: 'actif',
 			emailAddress: newEmailAddress,
 			password: await sails.helpers.passwords.hashPassword(password),
-			tosAcceptedByIp: this.req.ip
+			tosAcceptedByIp: that.req.ip
 		}, sails.config.custom.verifyEmailAddresses ? {
 			emailProofToken: await sails.helpers.strings.random('url-friendly'),
 			emailProofTokenExpiresAt: Date.now() + sails.config.custom.emailProofTokenTTL,
 			emailStatus: 'unconfirmed'
 		} : {}))
-			.intercept('E_UNIQUE', 'emailAlreadyInUse')
+			.intercept('ya', 'emailAlreadyInUse')
 			.intercept({ name: 'UsageError' }, 'invalid2')
 			.fetch();
 
 
-
+		console.log(newUserRecord);
 		console.log('ho');
 
-		// If billing feaures are enabled, save a new customer entry in the Stripe API.
-		// Then persist the Stripe customer id in the database.
-		// if (sails.config.custom.enableBillingFeatures) {
-		// 	let stripeCustomerId = await sails.helpers.stripe.saveBillingInfo.with({
-		// 		emailAddress: newEmailAddress
-		// 	}).timeout(5000).retry();
-		// 	await User.updateOne({ id: newUserRecord.id })
-		// 		.set({
-		// 			stripeCustomerId
-		// 		});
-		// }
 
 		// Store the user's new id in their session.
-		this.req.session.userId = newUserRecord.id;
+		that.req.session.userId = newUserRecord.id;
 
 		// In case there was an existing session (e.g. if we allow users to go to the signup page
 		// when they're already logged in), broadcast a message that we can display in other open tabs.
@@ -133,7 +185,7 @@ module.exports = {
 			console.log('SEND EMAIL TEMPLATE');
 			// Send "confirm account" email
 			await sails.helpers.email.sendHtmlEmail.with({
-				to: newEmailAddress,
+				to: newUserRecord.emailAddress,
 				subject: 'Voici votre mot de passe',
 				layout: 'layout-email',
 				template: 'email-welcome-password',
@@ -148,6 +200,8 @@ module.exports = {
 			sails.log.info('Skipping new account email verification... (since `verifyEmailAddresses` is disabled)');
 		}
 		return newUserRecord;
+
+
 	}
 
 };

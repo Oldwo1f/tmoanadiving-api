@@ -1,10 +1,10 @@
 module.exports = {
 
 
-	friendlyName: 'Get one user',
+	friendlyName: 'Delete one Plongee',
 
 
-	description: 'Fetch user by id and retrieve it',
+	description: 'Fetch Plongee by id and delete it',
 
 
 	extendedDescription:
@@ -15,7 +15,7 @@ module.exports = {
 		id: {
 			required: true,
 			type: 'string',
-			description: 'The id of user',
+			description: 'The id of Plongee',
 		}
 
 	},
@@ -24,7 +24,7 @@ module.exports = {
 	exits: {
 
 		success: {
-			description: 'Voici votre utilisateur'
+			description: 'Plongee supprimé'
 		},
 
 		invalid: {
@@ -36,16 +36,17 @@ module.exports = {
 
 
 	fn: async function ({ id }) {
-		console.log('CONTROLLER: User | get-one ==> ', id);
+		console.log('CONTROLLER: Plongee | delete-one ==> ', id);
 
 
 
 
-		var record = await User.findOne(id).populate('passacheter')
+		var record = await Plongee.destroy(id)
 			.intercept({ name: 'UsageError' }, 'invalid')
 
 
-		return record
+		return id
+
 
 	}
 

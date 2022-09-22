@@ -9,28 +9,20 @@ module.exports = {
 
 	inputs: {
 
-		// emailAddress: {
-		// 	required: true,
-		// 	type: 'string',
-		// 	isEmail: true,
-		// 	description: 'The email address for the new account, e.g. m@example.com.',
-		// 	extendedDescription: 'Must be a valid email address.',
-		// },
-		// firstName: {
-		// 	type: 'string',
-		// 	example: 'Frida Kahlo de Rivera',
-		// 	description: 'The user\'s full name.',                                                      
-		// },
+
 		name: {
 			type: 'string',
-			example: 'Frida Kahlo de Rivera',
-			description: 'The user\'s full name.',
 		},
-		// role: {
-		// 	type: 'string',
-		// 	example: 'user',
-		// 	description: 'The user\'s role.',
-		// }
+
+		login: {
+			type: 'string',
+
+		},
+		password: {
+			type: 'string',
+
+		},
+
 
 	},
 
@@ -60,25 +52,29 @@ module.exports = {
 	},
 
 
-	fn: async function ({ name }) {
+	fn: async function ({ name, login, password }) {
 
 
-		// const { customAlphabet } = require('nanoid')
-		// const nanoid = customAlphabet('abcdefghijklmnopqrstuvwxyz', 6)
-		// password = nanoid()
-		// console.log('email: ', emailAddress);
-		// console.log('firstName: ', firstName);
-		// console.log('lastName: ', lastName);
-		// var newEmailAddress = emailAddress.toLowerCase();
+		console.log('add part');
+		console.log(name);
+		console.log(login);
+		console.log(password);
 
-		// Build up data for the new user record and save it to the database.
-		// (Also use `fetch` to retrieve the new ID so that we can use it below.)
-		var newRecord = await Partenaire.create({ name: name })
+
+		var newRecord = await Partenaire.create({
+			name: name,
+			password: await sails.helpers.passwords.hashPassword(password),
+			login: login,
+			location: {
+				"type": "Point",
+				"coordinates": [parseFloat(0), parseFloat(0)]
+			}
+		})
 			.intercept('E_UNIQUE', 'nameAlreadyInUse')
 			.intercept({ name: 'UsageError' }, 'invalid2')
 			.fetch();
 
-
+		console.log('newRecord==>', newRecord);
 
 
 

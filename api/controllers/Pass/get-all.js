@@ -1,10 +1,10 @@
 module.exports = {
 
 
-	friendlyName: 'Get users',
+	friendlyName: 'Get Pass',
 
 
-	description: 'Fetch users list and retrieve it',
+	description: 'Fetch Pass list and retrieve it',
 
 
 	extendedDescription:
@@ -45,7 +45,7 @@ module.exports = {
 
 
 	fn: async function ({ page, limit, archive }) {
-		console.log('CONTROLLER: User | get-all');
+		console.log('CONTROLLER: Pass | get-all');
 		page = page ? page : 1;
 		limit = limit ? limit : 100;
 		archive = archive ? archive : false;
@@ -54,10 +54,10 @@ module.exports = {
 		console.log('archive: ', archive);
 
 		if (archive) {
-			var record = await User.find({ status: 'archive' }).limit(limit).skip((page - 1) * (limit - 1)).populate('passacheter')
+			var record = await Pass.find({ status: 'archive' }).limit(limit).skip((page - 1) * (limit - 1)).populate('user')
 				.intercept({ name: 'UsageError' }, 'invalid')
 		} else {
-			var record = await User.find({ status: { '!=': 'archive' } }).limit(limit).skip((page - 1) * (limit - 1)).populate('passacheter')
+			var record = await Pass.find({ status: { '!=': 'archive' } }).limit(limit).skip((page - 1) * (limit - 1)).populate('user')
 				.intercept({ name: 'UsageError' }, 'invalid')
 		}
 

@@ -15,28 +15,28 @@ module.exports.routes = {
   'GET /api/v1/addfirstadmin': { action: 'administrator/add-first-admin' },
   // Auth
   'POST /api/v1/auth/login': { action: 'auth/login' },
+  'POST /api/v1/auth/loginappclub': { action: 'auth/login-appclub' },
   'POST /api/v1/auth/loginadmin': { action: 'auth/login-admin' },
   'POST /api/v1/auth/logout': { action: 'auth/logout' },
   'GET /api/v1/auth/user': { action: 'auth/get-me' },
+  'GET /api/v1/auth/partenaire': { action: 'auth/get-me-partenaire' },
 
 
   // PAGES
 
-  'GET /api/v1/pages': { action: 'page/get-all' },
-  'GET /api/v1/page/:id': { action: 'page/get-one' },
-  'PATCH /api/v1/page/:id': { action: 'page/update' },
-  'DELETE /api/v1/page/:id': { action: 'page/delete-one' },
-  'POST /api/v1/page': { action: 'page/add' },
-  'GET /fapi/v1/page/:url': { action: 'page/get-one-by-name-f' },
-  'GET /fapi/v1/jeu/fetchJeuxGagnant': { action: 'jeu/get-all-gagnants-f' },
+
   // USER
 
   'GET /api/v1/users': { action: 'user/get-all' },
   'GET /api/v1/user/:id': { action: 'user/get-one' },
+  'GET /api/v1/user/findbyidclient/:id': { action: 'user/get-one-by-idclient' },
+  'PATCH /api/v1/user/changepassword/:id': { action: 'user/change-password' },
   'PATCH /api/v1/user/:id': { action: 'user/update' },
   'PATCH /api/v1/user/resetPassword/:id': { action: 'user/reset-password' },
   'DELETE /api/v1/user/:id': { action: 'user/delete-one' },
+  'DELETE /api/v1/user/removeme/:id': { action: 'user/remove-me' },
   'POST /api/v1/user': { action: 'user/add' },
+  'POST /api/v1/searchclient': { action: 'user/search' },
 
 
   // ADMINISTRATOR
@@ -67,11 +67,12 @@ module.exports.routes = {
   'POST /api/v1/jeu/:idjeu/addImagefin': { action: 'jeu/add-image-fin' },
   'POST /api/v1/jeu/:idjeu/addImagegagnant': { action: 'jeu/add-image-gagnant' },
   'POST /api/v1/jeu/:idjeu/addLogo': { action: 'jeu/add-logo' },
-  // Partenaire
 
+  // Partenaire
   'GET /fapi/v1/partenaires': { action: 'partenaire/get-all-f' },
-  // 'GET /api/v1/partenaire': { action: 'partenaires/get-all' },
   'GET /api/v1/partenaires': { action: 'partenaire/get-all' },
+  'GET /api/v1/club': { action: 'partenaire/get-all-club' },
+  'POST /api/v1/club/byPosition': { action: 'partenaire/get-all-club-by-pos' },
   'GET /api/v1/partenaire/:id': { action: 'partenaire/get-one' },
   'PATCH /api/v1/partenaire/:id': { action: 'partenaire/update' },
   'DELETE /api/v1/partenaire/:id': { action: 'partenaire/delete-one' },
@@ -79,6 +80,25 @@ module.exports.routes = {
   'POST /api/v1/partenaire/:idpartenaire/addImage': { action: 'partenaire/add-image' },
   'POST /api/v1/partenaire/:idpartenaire/addLogo': { action: 'partenaire/add-logo' },
 
+  // Partenaire
+  'GET /fapi/v1/plongees': { action: 'plongee/get-all-f' },
+  'GET /api/v1/plongees': { action: 'plongee/get-all' },
+  'GET /api/v1/plongee/:id': { action: 'plongee/get-one' },
+  'PATCH /api/v1/plongee/:id': { action: 'plongee/update' },
+  'DELETE /api/v1/plongee/:id': { action: 'plongee/delete-one' },
+  'POST /api/v1/plongee': { action: 'plongee/add' },
+  'POST /api/v1/plongee/:idplongee/addImage': { action: 'plongee/add-image' },
+  'POST /api/v1/plongee/:idplongee/addLogo': { action: 'plongee/add-logo' },
+
+  // PASS
+
+
+  'POST /api/v1/ventedepass': { action: 'pass/vente' },
+  'GET /fapi/v1/pass': { action: 'pass/get-all-f' },
+  'GET /api/v1/pass': { action: 'pass/get-all' },
+  'GET /api/v1/pass/:id': { action: 'pass/get-one' },
+  'DELETE /api/v1/pass/:id': { action: 'pass/delete-one' },
+  'PATCH /api/v1/pass/:id': { action: 'pass/update' },
 
   // IMAGE
   'GET /api/v1/image/:path': { action: 'image/serve-image', skipAssets: false },

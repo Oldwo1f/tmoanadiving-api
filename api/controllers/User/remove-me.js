@@ -1,10 +1,10 @@
 module.exports = {
 
 
-	friendlyName: 'Get one user',
+	friendlyName: 'Delete one user',
 
 
-	description: 'Fetch user by id and retrieve it',
+	description: 'Fetch user by id and delete it',
 
 
 	extendedDescription:
@@ -24,7 +24,7 @@ module.exports = {
 	exits: {
 
 		success: {
-			description: 'Voici votre utilisateur'
+			description: 'Utilisateur supprimé'
 		},
 
 		invalid: {
@@ -36,16 +36,17 @@ module.exports = {
 
 
 	fn: async function ({ id }) {
-		console.log('CONTROLLER: User | get-one ==> ', id);
+		console.log('CONTROLLER: User | delete-one ==> ', id);
 
 
 
 
-		var record = await User.findOne(id).populate('passacheter')
+		var record = await User.destroy(id)
 			.intercept({ name: 'UsageError' }, 'invalid')
 
 
-		return record
+		return id
+
 
 	}
 

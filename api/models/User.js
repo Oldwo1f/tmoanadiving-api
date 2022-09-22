@@ -5,19 +5,54 @@
  */
 
 module.exports = {
-
+	schema: true,
 	attributes: {
 
 		//  ╔═╗╦═╗╦╔╦╗╦╔╦╗╦╦  ╦╔═╗╔═╗
 		//  ╠═╝╠╦╝║║║║║ ║ ║╚╗╔╝║╣ ╚═╗
 		//  ╩  ╩╚═╩╩ ╩╩ ╩ ╩ ╚╝ ╚═╝╚═╝
 
+		passacheter: {
+			collection: 'pass',
+			via: 'user'
+		},
+		plongees: {
+			collection: 'plongee',
+			via: 'user'
+		},
+		emailAddress: {
+			type: 'string',
+			required: true,
+			unique: true,
+			isEmail: true,
+			maxLength: 200,
+			example: 'mary.sue@example.com'
+		},
+		idclient: {
+			type: 'string',
+			unique: true,
+		},
+		qrcode: {
+			type: 'string',
+			unique: true,
+		},
 		status: {
 			type: 'string',
 			description: 'Une string représentant le status de l\'objet utilisateur',
 			example: 'actif',
 			isIn: ['archive', 'inactif', 'actif', 'draft'],
 			defaultsTo: 'actif',
+		},
+		resident: {
+			type: 'boolean',
+			defaultsTo: false,
+		},
+		creditPlongee: {
+			type: 'number',
+			defaultsTo: 0,
+		},
+		dateExpiCredit: {
+			type: 'number',
 		},
 		birthDate: {
 			type: 'string',
@@ -34,14 +69,66 @@ module.exports = {
 			maxLength: 25,
 			example: 'Paea'
 		},
-		emailAddress: {
+
+		country: {
 			type: 'string',
-			required: true,
-			unique: true,
+			maxLength: 25,
+			example: 'Paea'
+		},
+		level: {
+			type: 'string',
+			maxLength: 25,
+			example: 'Paea'
+		},
+
+
+
+		firstName2: {
+			type: 'string',
+			description: 'Full representation of the user\'s firstname.',
+			maxLength: 50,
+			example: 'Mary'
+		},
+		lastName2: {
+			type: 'string',
+			description: 'Full representation of the user\'s lastname.',
+			maxLength: 50,
+			example: 'Sue van der McHenst'
+		},
+		emailAddress2: {
+			type: 'string',
 			isEmail: true,
 			maxLength: 200,
 			example: 'mary.sue@example.com'
 		},
+
+		birthDate2: {
+			type: 'string',
+			description: 'Une string représentant la date de naissance au format Francais',
+			example: '09/02/1990'
+		},
+		phone2: {
+			type: 'string',
+			maxLength: 15,
+			example: '89547845 | +89956565656'
+		},
+		city2: {
+			type: 'string',
+			maxLength: 25,
+			example: 'Paea'
+		},
+		country2: {
+			type: 'string',
+			maxLength: 25,
+			example: 'Paea'
+		},
+		level2: {
+			type: 'string',
+			maxLength: 25,
+			example: 'Paea'
+		},
+
+
 
 		emailStatus: {
 			type: 'string',

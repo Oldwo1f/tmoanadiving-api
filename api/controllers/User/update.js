@@ -43,14 +43,20 @@ module.exports = {
 
 	fn: async function ({ id, datas }) {
 		console.log('CONTROLLER: User | update ==> ', id);
-
+		const dayjs = require('dayjs');
 		console.log('datas', datas);
+
+		datas.creditPlongee = Number(datas.creditPlongee)
+		datas.dateExpiCredit = dayjs(datas.dateExpiCredit).valueOf()
+		const passacheter = [...datas.passacheter]
+		delete datas.passacheter
 
 
 		var record = await User.updateOne(id).set(datas)
 			.intercept({ name: 'UsageError' }, 'invalid')
 
-
+		console.log('reccord', record);
+		record.passacheter = passacheter
 		return record
 
 	}

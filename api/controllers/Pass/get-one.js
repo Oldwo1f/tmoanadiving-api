@@ -1,10 +1,10 @@
 module.exports = {
 
 
-	friendlyName: 'Get one Partenaire',
+	friendlyName: 'Get one Pass',
 
 
-	description: 'Fetch Partenaire by id and retrieve it',
+	description: 'Fetch Pass by id and retrieve it',
 
 
 	extendedDescription:
@@ -15,7 +15,7 @@ module.exports = {
 		id: {
 			required: true,
 			type: 'string',
-			description: 'The id of Partenaire',
+			description: 'The id of Pass',
 		}
 
 	},
@@ -24,7 +24,7 @@ module.exports = {
 	exits: {
 
 		success: {
-			description: 'Voici votre Partenaire'
+			description: 'Voici votre Pass'
 		},
 
 		invalid: {
@@ -36,12 +36,12 @@ module.exports = {
 
 
 	fn: async function ({ id }) {
-		console.log('CONTROLLER: Partenaire | get-one ==> ', id);
+		console.log('CONTROLLER: Pass | get-one ==> ', id);
 
 
 
 
-		var record = await Partenaire.findOne(id).populate('images').populate('logos')
+		var record = await Pass.findOne(id).populate('images').populate('logos')
 			.intercept({ name: 'UsageError' }, 'invalid')
 
 		console.log(record);

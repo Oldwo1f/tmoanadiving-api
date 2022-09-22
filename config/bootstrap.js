@@ -9,7 +9,18 @@
  * https://sailsjs.com/config/bootstrap
  */
 
-module.exports.bootstrap = async function() {
+module.exports.bootstrap = async function (cb) {
+
+
+  sails.models.partenaire.native(function (err, collection) {
+    collection.ensureIndex({ location: '2dsphere' }, function () {
+
+      // It's very important to trigger this callack method when you are finished 
+      // with the bootstrap!  (otherwise your server will never lift, since it's waiting on the bootstrap)
+      cb();
+
+    });
+  });
 
   // By convention, this is a good place to set up fake data during development.
   //

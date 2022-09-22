@@ -51,13 +51,18 @@ module.exports.datastores = {
     adapter: 'sails-mongo',
     // url: 'mysql://user:password@host:port/database',
     host: 'localhost',
-    port: 40061,
-    // port: 27017,
-    database: 'MADMIN',
-    user: 'creapassionprod',
-    password: 'KGZP2898_WrR',
-    authSource: 'admin'
+    // port: 40061,
+    port: 27017,
+    database: 'temoana',
+    // user: 'creapassionprod',
+    // password: 'KGZP2898_WrR',
+    // authSource: 'admin'
   },
+  // default: {
+  //   adapter: require('sails-mysql'),
+  //   url: 'mysql://root:squ1ddy@localhost:3306/my_dev_db_name',
+  // }
+
 
 
 };
