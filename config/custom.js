@@ -30,9 +30,10 @@ module.exports.custom = {
   fromEmailAddress: 'noreply@madmin.com',
   fromName: 'The MADMIN Team',
   appPath: '/var/www/DEV/Temoana/SERVER',
-  prixUnitaireResidant: 12000,
-  prixUnitaireTouriste: 15000,
-  commissionPass: 0.15,
+  prixUnitaireResidant: 6300,
+  prixUnitaireTouriste: 7200,
+  commissionPassTouriste: 0.15,
+  commissionPassResidant: 0.05,
   // appPath: '/var/www/DEV/SERVER',
 
   internalEmailAddress: 'alexismomcilovic@gmail.com',
