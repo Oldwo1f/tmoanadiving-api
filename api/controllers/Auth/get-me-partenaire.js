@@ -40,8 +40,10 @@ module.exports = {
 
 		// const userId = '61c8f96b22230d6ff463aa8a'
 		// const partId = this.req.partenaireId
+		// console.log(this.req);
 		console.log(this.req.partenaireId);
-		const partId = '632b7f6aa19eb72065a4d125'
+		// console.log(this.req.session);
+		const partId = this.req.partenaireId
 
 		// console.log('this.req', this.req);
 		// console.log('this.req.user', this.req.user);

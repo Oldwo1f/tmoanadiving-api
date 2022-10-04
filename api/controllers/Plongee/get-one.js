@@ -41,7 +41,7 @@ module.exports = {
 
 
 
-		var record = await Plongee.findOne(id)
+		var record = await Plongee.findOne(id).populate('partenaire').populate('user').populate('clubrevendeur')
 			// .populate('images').populate('logos')
 			.intercept({ name: 'UsageError' }, 'invalid')
 

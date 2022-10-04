@@ -85,7 +85,7 @@ module.exports = {
 			};
 			return jwt.encode(payload, sails.config.session.secret);
 		}
-		console.log('LOGIN');
+		console.log('LOGIN appClub');
 		// Look up by the email address.
 		// (note that we lowercase it to ensure the lookup is always case-insensitive,
 		// regardless of which database we're using)
@@ -96,6 +96,7 @@ module.exports = {
 		console.log('partenaireRecord', partenaireRecord);
 		// If there was no matching user, respond thru the "badCombo" exit.
 		if (!partenaireRecord) {
+			console.log('badcombo');
 			throw {
 				badCombo: {
 					message: 'email adresse',
@@ -145,6 +146,7 @@ module.exports = {
 		console.log('OK');
 		console.log(partenaireRecord.id);
 		this.req.session.partenaireId = partenaireRecord.id;
+		console.log('this.req.session::::', this.req.session);
 		console.log('token ==', createJWT(partenaireRecord));
 		// this.res.set('Access-Control-Allow-Headers', 'strict-origin-when-cross-origin, access-control-allow-headers, application/json, text/plain, */*, Authorization');
 		this.res.send({ token: createJWT(partenaireRecord) });

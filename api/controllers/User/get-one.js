@@ -41,7 +41,7 @@ module.exports = {
 
 
 
-		var record = await User.findOne(id).populate('passacheter')
+		var record = await User.findOne(id).populate('passacheter').populate('plongees')
 			.intercept({ name: 'UsageError' }, 'invalid')
 
 

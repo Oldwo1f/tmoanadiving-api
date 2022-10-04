@@ -20,7 +20,7 @@ module.exports.custom = {
   // …
   baseUrl: 'http://localhost:1337',
 
-  platformCopyrightYear: '2021',
+  platformCopyrightYear: '2022',
 
   passwordResetTokenTTL: 24 * 60 * 60 * 1000,// 24 hours
   emailProofTokenTTL: 24 * 60 * 60 * 1000,// 24 hours
@@ -30,6 +30,9 @@ module.exports.custom = {
   fromEmailAddress: 'noreply@madmin.com',
   fromName: 'The MADMIN Team',
   appPath: '/var/www/DEV/Temoana/SERVER',
+  prixUnitaireResidant: 12000,
+  prixUnitaireTouriste: 15000,
+  commissionPass: 0.15,
   // appPath: '/var/www/DEV/SERVER',
 
   internalEmailAddress: 'alexismomcilovic@gmail.com',

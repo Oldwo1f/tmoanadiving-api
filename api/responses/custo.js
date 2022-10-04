@@ -20,18 +20,21 @@
  *     }
  * ```
  */
-module.exports = function custo(data, t) {
+module.exports = function custo(t) {
 
-  var req = this.req;
+  // var req = this.req;
   var res = this.res;
 
+  // console.log('res=', res);
   console.log('res=', res.message);
 
   sails.log.verbose('Ran custo ');
-  console.log('data==', data);
+  // console.log('data==', data);
   console.log('data==', t);
-
-  return res.send(data.message);
+  if (res.statusToSend)
+    return res.status(res.statusToSend).send(res.message);
+  else
+    return res.status(401).send(res.message);
 
 
 };

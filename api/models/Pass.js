@@ -15,6 +15,7 @@ module.exports = {
 		nbplongeerestant: { type: 'number', required: true },
 		price: { type: 'number', required: true },
 		resident: { type: 'boolean', required: true },
+		numerofacture: { type: 'string', required: true },
 		user: {
 			model: 'user',
 			// via: 'passacheter'

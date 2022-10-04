@@ -98,6 +98,8 @@ module.exports = {
 		console.log('userRecord', userRecord);
 		// If there was no matching user, respond thru the "badCombo" exit.
 		if (!userRecord) {
+			res.message = 'bad combo'
+			res.statusToSend = 401
 			throw {
 				badCombo: {
 					message: 'email adresse',

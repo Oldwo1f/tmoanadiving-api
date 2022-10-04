@@ -54,10 +54,10 @@ module.exports = {
 		console.log('archive: ', archive);
 
 		if (archive) {
-			var record = await Plongee.find({ status: 'archive' }).limit(limit).skip((page - 1) * (limit - 1))
+			var record = await Plongee.find({ status: 'archive' }).populate('partenaire').populate('user').populate('clubrevendeur').sort('createdAt DESC').limit(limit).skip((page - 1) * (limit - 1))
 				.intercept({ name: 'UsageError' }, 'invalid')
 		} else {
-			var record = await Plongee.find({ status: { '!=': 'archive' } }).limit(limit).skip((page - 1) * (limit - 1))
+			var record = await Plongee.find({ status: { '!=': 'archive' } }).populate('partenaire').populate('user').populate('clubrevendeur').sort('createdAt DESC').limit(limit).skip((page - 1) * (limit - 1))
 				.intercept({ name: 'UsageError' }, 'invalid')
 		}
 

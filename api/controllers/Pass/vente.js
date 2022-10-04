@@ -25,6 +25,9 @@ module.exports = {
 		userid: {
 			type: 'string',
 		},
+		clubId: {
+			type: 'string',
+		},
 
 
 	},
@@ -58,7 +61,7 @@ module.exports = {
 	},
 
 
-	fn: async function ({ dateeffect, nbplongee, price, resident, userid }) {
+	fn: async function ({ dateeffect, nbplongee, price, resident, userid, clubId }) {
 
 		const dayjs = require('dayjs');
 
@@ -68,6 +71,7 @@ module.exports = {
 		console.log('price', price);
 		console.log('resident', resident);
 		console.log('user', userid);
+		console.log('clubId', clubId);
 
 		dateeffect = dayjs(dateeffect).valueOf()
 		const datefin = dayjs(dateeffect).add(1, 'year').valueOf()
@@ -89,6 +93,10 @@ module.exports = {
 		// 	})
 
 		// }
+		var club = await Partenaire.findOne(clubId)
+
+		console.log(club.numeroFactureClient);
+		console.log(club.prefixFactureClient);
 
 
 		var newPass = await Pass.create({
@@ -98,12 +106,14 @@ module.exports = {
 			price: price,
 			resident: resident,
 			user: userid,
+			partenaire: clubId,
+			numerofacture: '' + club.prefixFactureClient + club.numeroFactureClient
 
 		})
 			.intercept({ name: 'UsageError' }, 'invalid')
 			.fetch();
 
-
+		await Partenaire.updateOne(clubId).set({ numeroFactureClient: club.numeroFactureClient + 1 })
 
 		console.log(newPass);
 		// console.log(updateduser);

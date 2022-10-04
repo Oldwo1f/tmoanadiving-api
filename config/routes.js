@@ -74,13 +74,28 @@ module.exports.routes = {
   'GET /api/v1/club': { action: 'partenaire/get-all-club' },
   'POST /api/v1/club/byPosition': { action: 'partenaire/get-all-club-by-pos' },
   'GET /api/v1/partenaire/:id': { action: 'partenaire/get-one' },
+  'GET /api/v1/partenaire/getstats/:id': { action: 'partenaire/get-stats' },
+  'GET /api/v1/partenaire/getstats2/:id': { action: 'partenaire/get-stats-2' },
   'PATCH /api/v1/partenaire/:id': { action: 'partenaire/update' },
   'DELETE /api/v1/partenaire/:id': { action: 'partenaire/delete-one' },
   'POST /api/v1/partenaire': { action: 'partenaire/add' },
+  'POST /api/v1/partenaire/dlfactures/:id': { action: 'partenaire/dl-factures' },
   'POST /api/v1/partenaire/:idpartenaire/addImage': { action: 'partenaire/add-image' },
   'POST /api/v1/partenaire/:idpartenaire/addLogo': { action: 'partenaire/add-logo' },
 
-  // Partenaire
+  // Factures
+  'GET /api/v1/factures': { action: 'facture/get-all' },
+  'GET /api/v1/facture/:id': { action: 'facture/get-one' },
+  'PATCH /api/v1/facture/:id': { action: 'facture/update' },
+  'DELETE /api/v1/facture/:id': { action: 'facture/delete-one' },
+  'POST /api/v1/facture': { action: 'facture/add' },
+  'GET /api/v1/facture/dlfactures/:id/:month': { action: 'facture/dl-factures' },
+  'GET /api/v1/facture/dlfacturesapayer/:id/:month': { action: 'facture/dl-factures-a-payer' },
+  'GET /api/v1/facture/everymonth': { action: 'facture/every-month' },
+  'GET /api/v1/facture/removeall': { action: 'facture/removeall' },
+
+  // Plongées
+  'POST /api/v1/plongees/prelevementplongee': { action: 'plongee/prelevement-plongee' },
   'GET /fapi/v1/plongees': { action: 'plongee/get-all-f' },
   'GET /api/v1/plongees': { action: 'plongee/get-all' },
   'GET /api/v1/plongee/:id': { action: 'plongee/get-one' },
@@ -97,6 +112,7 @@ module.exports.routes = {
   'GET /fapi/v1/pass': { action: 'pass/get-all-f' },
   'GET /api/v1/pass': { action: 'pass/get-all' },
   'GET /api/v1/pass/:id': { action: 'pass/get-one' },
+  'GET /api/v1/facturepass/:id': { action: 'pass/facture' },
   'DELETE /api/v1/pass/:id': { action: 'pass/delete-one' },
   'PATCH /api/v1/pass/:id': { action: 'pass/update' },
 

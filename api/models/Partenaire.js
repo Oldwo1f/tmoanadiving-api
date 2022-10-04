@@ -18,6 +18,11 @@ module.exports = {
 		city: { type: 'string' },
 		email: { type: 'string' },
 		description: { type: 'string' },
+		footerfacture: { type: 'string', defaultsTo: '' },
+		numeroFactureClient: { type: 'number', defaultsTo: 0 },
+		prefixFactureClient: { type: 'string', defaultsTo: "PASS-" },
+		numeroFactureInterne: { type: 'number', defaultsTo: 0 },
+		prefixFactureInterne: { type: 'string', defaultsTo: "Club-" },
 		type: { type: 'string', isIn: ['agency', 'club'], defaultsTo: 'club' },
 		status: { type: 'string', isIn: ['draft', 'actif', 'inactif', 'archive'], defaultsTo: 'draft' },
 		location: {
@@ -39,6 +44,10 @@ module.exports = {
 		plongees: {
 			collection: 'plongee',
 			via: 'partenaire'
+		},
+		creditsFacture: {
+			collection: 'plongee',
+			via: 'clubrevendeur'
 		}
 
 

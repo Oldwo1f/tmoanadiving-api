@@ -126,6 +126,7 @@ module.exports = {
 		// (This will be persisted when the response is sent.)
 		console.log('OK');
 		this.req.session.userId = userRecord.id;
+		console.log(this.req.session);
 		// this.res.set('Access-Control-Allow-Headers', 'strict-origin-when-cross-origin, access-control-allow-headers, application/json, text/plain, */*, Authorization');
 		this.res.send({ token: createJWT(userRecord) });
 

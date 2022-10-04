@@ -54,10 +54,10 @@ module.exports = {
 		console.log('archive: ', archive);
 
 		if (archive) {
-			var record = await User.find({ status: 'archive' }).limit(limit).skip((page - 1) * (limit - 1)).populate('passacheter')
+			var record = await User.find({ status: 'archive' }).limit(limit).skip((page - 1) * (limit - 1)).sort('createdAt DESC').populate('passacheter')
 				.intercept({ name: 'UsageError' }, 'invalid')
 		} else {
-			var record = await User.find({ status: { '!=': 'archive' } }).limit(limit).skip((page - 1) * (limit - 1)).populate('passacheter')
+			var record = await User.find({ status: { '!=': 'archive' } }).limit(limit).skip((page - 1) * (limit - 1)).sort('createdAt DESC').populate('passacheter')
 				.intercept({ name: 'UsageError' }, 'invalid')
 		}
 

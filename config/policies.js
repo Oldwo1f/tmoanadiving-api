@@ -19,6 +19,8 @@ module.exports.policies = {
 
   '*': true,
   'auth/get-me': 'isConnected',
+  'auth/get-me-partenaire': 'isConnectedClub',
+  // 'partenaire/get-stats': 'isConnectedClub',
   // userController: { me: 'isConnected' }
 
 };

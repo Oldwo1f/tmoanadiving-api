@@ -10,16 +10,18 @@ module.exports = {
 
 		name: { type: 'string', minLength: 1, maxLength: 55 },
 		date: { type: 'number' },
-		status: { type: 'string', isIn: ['draft', 'actif', 'inactif', 'archive'], defaultsTo: 'draft' },
-
+		nbPlongeur: { type: 'number', defaultsTo: 1 },
+		status: { type: 'string', isIn: ['draft', 'actif', 'inactif', 'archive'], defaultsTo: 'actif' },
+		resident: { type: 'boolean', required: true },
 
 		user: {
-			collection: 'user',
-			via: 'plongees'
+			model: 'user',
 		},
 		partenaire: {
-			collection: 'partenaire',
-			via: 'plongees'
+			model: 'partenaire',
+		},
+		clubrevendeur: {
+			model: 'partenaire',
 		}
 
 
