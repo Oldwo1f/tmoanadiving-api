@@ -86,6 +86,8 @@ module.exports = {
 				thisYears.push(elem)
 			}
 		})
+		console.log('(passvenduTprice * sails.config.custom.prixUnitaireTouriste) * sails.config.custom.commissionPassTouriste', (passvenduTprice * sails.config.custom.prixUnitaireTouriste) * sails.config.custom.commissionPassTouriste);
+		console.log('(passvenduTprice * sails.config.custom.prixUnitaireTouriste) * sails.config.custom.commissionPassTouriste', (passvenduRprice * sails.config.custom.prixUnitaireResidant) * sails.config.custom.commissionPassResidant);
 
 		const result = {
 

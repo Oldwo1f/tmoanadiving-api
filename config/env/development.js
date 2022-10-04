@@ -74,8 +74,8 @@ module.exports = {
 
 
 	// port: 40063,
-	// port: 1337,
-	port: 40064,
+	port: 1337,
+	// port: 40064,
 
 	// ssl: undefined,
 
@@ -87,7 +87,8 @@ module.exports = {
 		rememberMeCookieMaxAge: 30 * 24 * 60 * 60 * 1000, // 30 days
 		fromEmailAddress: 'noreply@madmin.com',
 		fromName: 'The MADMIN Team',
-		appPath: '/var/www/DEV/Temoana/SERVER',
+		// appPath: '/var/www/DEV/Temoana/SERVER',
+		appPath: '/var/www/temoanaapi',
 		prixUnitaireResidant: 6300,
 		prixUnitaireTouriste: 7200,
 		commissionPassTouriste: 0.15,
