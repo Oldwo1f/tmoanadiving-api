@@ -50,19 +50,19 @@ module.exports = {
 		console.log('CONTROLLER: Partenaire | DL facture ==> ' + id);
 
 
-		month = dayjs(month).subtract(6, 'd').valueOf()
+		// month = dayjs(month).subtract(6, 'd').valueOf()
 
 		var currentPartenaire = await Partenaire.findOne(id)
 
 		var factures = await Facture.find({
 			createdAt: {
-				'>': dayjs(month).startOf('M').valueOf(),
+				'>': dayjs(month).subtract(1, 'M').startOf('M').valueOf(),
 				'<=': dayjs(month).endOf('M').valueOf()
 			},
 			emetteur: id
 		}).populate('recepteur').populate('emetteur')
 
-		// console.log('factures', factures);
+		console.log('factures', factures);
 
 
 		const PDFDONES = Promise.all(_.map(factures, async element => {
@@ -90,17 +90,23 @@ module.exports = {
 			datas.nbPlongeeTouriste = element.nbplongeeTouriste
 			// datas.createdAt = dayjs().format('DD/MM/YYYY')
 
-			datas.prixunittouriste = sails.config.custom.prixUnitaireTouriste;
-			datas.prixunitresident = sails.config.custom.prixUnitaireResidant;
+			datas.prixunittouriste = sails.config.custom.prixUnitaireTouristeHT;
+			datas.prixunitresident = sails.config.custom.prixUnitaireResidantHT;
 
 			// datas.price = datas.price.toString().replace(/(\d)(?=(\d{3})+(?!\d))/g, "$1 ");
-			datas.totalPrice = Number(datas.nbPlongeeResident) * Number(sails.config.custom.prixUnitaireResidant) + Number(datas.nbPlongeeTouriste) * Number(sails.config.custom.prixUnitaireTouriste)
-			datas.totalPrice = datas.totalPrice.toString().replace(/(\d)(?=(\d{3})+(?!\d))/g, "$1 ")
+			datas.totalPrice = Number(datas.nbPlongeeResident) * Number(sails.config.custom.prixUnitaireResidantHT) + Number(datas.nbPlongeeTouriste) * Number(sails.config.custom.prixUnitaireTouristeHT)
+
+			datas.tva = Math.round((datas.totalPrice * sails.config.custom.tva)).toString().replace(/(\d)(?=(\d{3})+(?!\d))/g, "$1 ");
+			datas.tvas = Math.round((datas.totalPrice * sails.config.custom.tva)).toString().replace(/(\d)(?=(\d{3})+(?!\d))/g, "$1 ");
+
+			datas.totalPriceHT = Math.round(datas.totalPrice).toString().replace(/(\d)(?=(\d{3})+(?!\d))/g, "$1 ")
+			datas.totalPriceTTC = Math.round((datas.totalPrice + (datas.totalPrice * sails.config.custom.tva) + (datas.totalPrice * sails.config.custom.tvas))).toString().replace(/(\d)(?=(\d{3})+(?!\d))/g, "$1 ")
+
 
 			datas.prixunitresident = datas.prixunitresident.toString().replace(/(\d)(?=(\d{3})+(?!\d))/g, "$1 ");
 			datas.prixunittouriste = datas.prixunittouriste.toString().replace(/(\d)(?=(\d{3})+(?!\d))/g, "$1 ");
-			datas.prixtotaltouriste = (Number(datas.nbPlongeeTouriste) * Number(sails.config.custom.prixUnitaireTouriste)).toString().replace(/(\d)(?=(\d{3})+(?!\d))/g, "$1 ");
-			datas.prixtotalresident = (Number(datas.nbPlongeeResident) * Number(sails.config.custom.prixUnitaireResidant)).toString().replace(/(\d)(?=(\d{3})+(?!\d))/g, "$1 ");
+			datas.prixtotaltouriste = Math.round((Number(datas.nbPlongeeTouriste) * Number(sails.config.custom.prixUnitaireTouristeHT))).toString().replace(/(\d)(?=(\d{3})+(?!\d))/g, "$1 ");
+			datas.prixtotalresident = Math.round((Number(datas.nbPlongeeResident) * Number(sails.config.custom.prixUnitaireResidantHT))).toString().replace(/(\d)(?=(\d{3})+(?!\d))/g, "$1 ");
 
 			// const nFacture = await Partenaire.findOne(element.club.id)
 
@@ -108,6 +114,7 @@ module.exports = {
 			datas.createdAt = dayjs().format('DD/MM/YYYY')
 			datas.club = element.emetteur
 			datas.clubReceveur = element.recepteur
+
 
 
 

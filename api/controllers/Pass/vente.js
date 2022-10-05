@@ -16,6 +16,9 @@ module.exports = {
 		nbplongee: {
 			type: 'number',
 		},
+		// numerofacture: {
+		// 	type: 'string',
+		// },
 		price: {
 			type: 'number',
 		},

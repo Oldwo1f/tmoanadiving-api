@@ -76,9 +76,15 @@ module.exports = {
 		console.log(' sails.config.prixUnitaireResidant =', sails.config.custom.prixUnitaireResidant);
 		datas.prixunit = pass.resident ? sails.config.custom.prixUnitaireResidant : sails.config.custom.prixUnitaireTouriste
 		console.log('prixunit=', datas.prixunit);
+
+		datas.tva = (datas.price * sails.config.custom.tva).toString().replace(/(\d)(?=(\d{3})+(?!\d))/g, "$1 ");
+		datas.tvas = (datas.price * sails.config.custom.tvas).toString().replace(/(\d)(?=(\d{3})+(?!\d))/g, "$1 ");
 		datas.price = datas.price.toString().replace(/(\d)(?=(\d{3})+(?!\d))/g, "$1 ");
 		datas.prixunit = datas.prixunit.toString().replace(/(\d)(?=(\d{3})+(?!\d))/g, "$1 ");
+		// datas.numerofacture= 
 
+		//  await Partenaire.updateOne(id).set({numerofacture:datas.numerofacture})
+		// 	.intercept({ name: 'UsageError' }, 'invalid')
 
 		var document = {
 			html: html,

@@ -70,6 +70,25 @@ module.exports = {
 		// trustProxy: true,
 
 	},
+	datastores: {
+		default: {
+
+
+			// adapter: 'sails-mongo',
+			// url: 'mysql://user:password@host:port/database',
+			host: 'localhost',
+			database: 'temoana',
+			// port: 27017,
+			// user: '',
+			// password: '',
+			// authSource: ''
+			port: 40061,
+			user: 'TemoanaUser',
+			password: 'SECRET_6301599',
+			authSource: 'admin'
+		},
+
+	},
 
 
 
@@ -89,10 +108,14 @@ module.exports = {
 		fromName: 'The MADMIN Team',
 		// appPath: '/var/www/DEV/Temoana/SERVER',
 		appPath: '/var/www/temoanaapi',
-		prixUnitaireResidant: 6300,
-		prixUnitaireTouriste: 7200,
+		prixUnitaireResidant: 7000,
+		prixUnitaireTouriste: 8200,
+		prixUnitaireResidantHT: 6604,
+		prixUnitaireTouristeHT: 7736,
 		commissionPassTouriste: 0.15,
 		commissionPassResidant: 0.05,
+		tva: 0.05,
+		tvas: 0.01,
 		internalEmailAddress: 'alexismomcilovic@gmail.com',
 		verifyEmailAddresses: true,
 	},

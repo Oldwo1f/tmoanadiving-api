@@ -42,7 +42,7 @@ module.exports = {
 
 		var allPlongeesThisMonth = await Plongee.find({
 			createdAt: {
-				'>': dayjs(month).startOf('M').valueOf(),
+				'>': dayjs(month).subtract(1, 'M').startOf('M').valueOf(),
 				'<=': dayjs(month).endOf('M').valueOf()
 			}
 		})
