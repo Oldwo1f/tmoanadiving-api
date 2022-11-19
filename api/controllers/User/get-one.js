@@ -41,11 +41,21 @@ module.exports = {
 
 
 
-		var record = await User.findOne(id).populate('passacheter').populate('plongees')
+		var datas = await User.findOne(id).populate('passacheter').populate('plongees')
 			.intercept({ name: 'UsageError' }, 'invalid')
 
 
-		return record
+		const records = await Promise.all(datas.plongees.map(async (plongee) => {
+			// console.log('part.id', part.dist, part._id);
+			const record = await Plongee.findOne(plongee.id).populate('partenaire').populate('clubrevendeur')
+			// record.dist = part.dist
+			// console.log('record', record);
+			return record
+		}))
+		datas.plongees = records
+		console.log('records--------------', records);
+
+		return datas
 
 	}
 

@@ -78,14 +78,14 @@ module.exports = {
 			// url: 'mysql://user:password@host:port/database',
 			host: 'localhost',
 			database: 'temoana',
-			// port: 27017,
-			// user: '',
-			// password: '',
-			// authSource: ''
-			port: 40061,
-			user: 'TemoanaUser',
-			password: 'SECRET_6301599',
-			authSource: 'admin'
+			port: 27017,
+			user: '',
+			password: '',
+			authSource: ''
+			// port: 40061,
+			// user: 'TemoanaUser',
+			// password: 'SECRET_6301599',
+			// authSource: 'admin'
 		},
 
 	},

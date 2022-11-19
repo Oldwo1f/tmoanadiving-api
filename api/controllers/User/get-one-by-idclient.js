@@ -44,7 +44,8 @@ module.exports = {
 			.intercept({ name: 'UsageError' }, 'invalid')
 
 		console.log(record);
-
+		if (!record)
+			return 'invalid'
 
 		return record
 

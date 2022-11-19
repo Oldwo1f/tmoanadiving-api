@@ -96,7 +96,7 @@ module.exports = {
 			passvenduT: passvenduT.length,
 			passvenduTprice: passvenduTprice * sails.config.custom.prixUnitaireTouristeHT,
 			passvenduRprice: passvenduRprice * sails.config.custom.prixUnitaireResidantHT,
-			passvenduCom: (passvenduTprice * sails.config.custom.prixUnitaireTouristeHT) * sails.config.custom.commissionPassTouriste + (passvenduRprice * sails.config.custom.prixUnitaireResidantHT) * sails.config.custom.commissionPassResidant,
+			passvenduCom: Math.round((passvenduTprice * sails.config.custom.prixUnitaireTouristeHT) * sails.config.custom.commissionPassTouriste + (passvenduRprice * sails.config.custom.prixUnitaireResidantHT) * sails.config.custom.commissionPassResidant),
 			nbplongees: club.plongees.length,
 			thisMonth: thisMonth.length,
 			thisYears: thisYears.length,

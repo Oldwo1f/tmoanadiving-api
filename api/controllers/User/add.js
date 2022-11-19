@@ -1,3 +1,5 @@
+
+
 module.exports = {
 
 
@@ -28,9 +30,11 @@ module.exports = {
 		},
 		firstName: {
 			type: 'string',
+			required: true
 		},
 		lastName: {
 			type: 'string',
+			required: true
 		},
 		birthDate: {
 			type: 'string',
@@ -109,6 +113,13 @@ module.exports = {
 		console.log('country: ', country);
 		var newEmailAddress = emailAddress.toLowerCase();
 
+		const emailExist = await User.findOne({ emailAddress: newEmailAddress });
+		console.log('emailexist', emailExist)
+		if (emailExist) {
+			throw 'emailAlreadyInUse'
+		}
+
+		console.log('emailexist', emailExist)
 		var idclient = firstName.slice(0, 1) + lastName.slice(0, 1) + nanoid();
 		idclient = idclient.toUpperCase();
 		console.log('idclient=', idclient);

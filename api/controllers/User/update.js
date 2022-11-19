@@ -44,12 +44,13 @@ module.exports = {
 	fn: async function ({ id, datas }) {
 		console.log('CONTROLLER: User | update ==> ', id);
 		const dayjs = require('dayjs');
-		console.log('datas', datas);
+		console.log('datasss--------', datas);
 
 		datas.creditPlongee = Number(datas.creditPlongee)
 		datas.dateExpiCredit = dayjs(datas.dateExpiCredit).valueOf()
 		const passacheter = [...datas.passacheter]
 		delete datas.passacheter
+		delete datas.plongees
 
 
 		var record = await User.updateOne(id).set(datas)

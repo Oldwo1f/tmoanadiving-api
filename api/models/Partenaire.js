@@ -23,6 +23,12 @@ module.exports = {
 		prefixFactureClient: { type: 'string', defaultsTo: "PASS-" },
 		numeroFactureInterne: { type: 'number', defaultsTo: 0 },
 		prefixFactureInterne: { type: 'string', defaultsTo: "Club-" },
+		nTahiti: {
+			type: 'string',
+		},
+		emailFacturation: {
+			type: 'string',
+		},
 		type: { type: 'string', isIn: ['agency', 'club'], defaultsTo: 'club' },
 		status: { type: 'string', isIn: ['draft', 'actif', 'inactif', 'archive'], defaultsTo: 'draft' },
 		location: {

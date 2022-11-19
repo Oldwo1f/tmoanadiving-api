@@ -58,6 +58,9 @@ module.exports = {
 					},
 					{
 						emailAddress: { contains: slug }
+					},
+					{
+						idclient: { contains: slug }
 					}
 				]
 			}

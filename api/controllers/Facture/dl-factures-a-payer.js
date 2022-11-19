@@ -159,6 +159,7 @@ module.exports = {
 			console.log('zipfile', zipfile);
 			this.res.attachment('factures' + dayjs(month).format('MMMM') + '-' + '-a-payer.zip').send(zipfile);
 		})
+
 		fs.rm('./.tmp/facturesInterneZIP/' + dayjs(month).format('MMMM') + currentPartenaire.id + '.zip', () => {
 			console.log('CB');
 		})
