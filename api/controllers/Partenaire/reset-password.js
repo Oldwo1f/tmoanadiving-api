@@ -1,10 +1,10 @@
 module.exports = {
 
 
-	friendlyName: 'Reset user password',
+	friendlyName: 'Reset Partenaire password',
 
 
-	description: 'Fetch user by id / Reset his password / Send it by mail',
+	description: 'Fetch Partenaire by id / Reset his password / Send it by mail',
 
 
 	extendedDescription:
@@ -15,7 +15,7 @@ module.exports = {
 		id: {
 			required: true,
 			type: 'string',
-			description: 'The id of user',
+			description: 'The id of Partenaire',
 		},
 
 
@@ -37,7 +37,7 @@ module.exports = {
 
 
 	fn: async function ({ id, datas }) {
-		console.log('CONTROLLER: User | update ==> ', id);
+		console.log('CONTROLLER: Partenaire | update ==> ', id);
 		const { customAlphabet } = require('nanoid')
 		const nanoid = customAlphabet('abcdefghijklmnopqrstuvwxyz', 6)
 		const password = nanoid()
@@ -47,12 +47,12 @@ module.exports = {
 		const hashedpassword = await sails.helpers.passwords.hashPassword(password)
 
 		console.log(password + ' --- ' + hashedpassword);
-		var record = await User.updateOne(id).set({ password: hashedpassword })
+		var record = await Partenaire.updateOne(id).set({ password: hashedpassword })
 			.intercept({ name: 'UsageError' }, 'invalid')
 
 		console.log('firstName', record.firstName);
 		await sails.helpers.email.sendHtmlEmail.with({
-			to: record.emailAddress,
+			to: record.email,
 			subject: 'Votre nouveau mot de passe',
 			layout: 'layout-email',
 			template: 'email-new-password',

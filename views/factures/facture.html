@@ -157,8 +157,9 @@
 		font-weight: bold;
 		font-size: 16px;
 	}
+
 	.tva {
-		clear:both;
+		clear: both;
 		margin-right: 20px;
 		float: right;
 		margin-top: 5px;
@@ -181,7 +182,7 @@
 				<h2 class="partName">{{d.partenaire.name}}</h2>
 				{{d.partenaire.city}}<br>
 				{{d.partenaire.island}}<br>
-				Numéro Tahiti : {{d.partenaire.numeroTahiti}}
+				Numéro Tahiti : {{d.partenaire.numeroTahiti}} <br>
 				Tel: {{d.partenaire.phone}} <br>
 				Email: {{d.partenaire.email}}
 			</div>
@@ -214,8 +215,8 @@
 		</div>
 		<!-- <small>Tva non applicable</small> -->
 		<div class="total">Net à payer : {{d.price}} XPF</div>
-		<div class="tva">dont TVA ( 5% ) :  {{d.tva}} XPF</div>
-		<div class="tva">dont Taxe social ( 1% ) :  {{d.tvas}} XPF</div>
+		<div class="tva">dont TVA ( 5% ) : {{d.tva}} XPF</div>
+		<div class="tva">dont Taxe social ( 1% ) : {{d.tvas}} XPF</div>
 		<!-- <ul>
       {{#each users}}
       <li>Name: {{this.name}}</li>

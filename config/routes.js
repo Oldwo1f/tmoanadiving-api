@@ -33,6 +33,8 @@ module.exports.routes = {
   'PATCH /api/v1/user/changepassword/:id': { action: 'user/change-password' },
   'PATCH /api/v1/user/:id': { action: 'user/update' },
   'PATCH /api/v1/user/resetPassword/:id': { action: 'user/reset-password' },
+  'GET /api/v1/user/resetPassword/:id': { action: 'user/reset-password' },
+  'POST /api/v1/user/forgotpassword': { action: 'user/forgot-password' },
   'DELETE /api/v1/user/:id': { action: 'user/delete-one' },
   'DELETE /api/v1/user/removeme/:id': { action: 'user/remove-me' },
   'POST /api/v1/user': { action: 'user/add' },
@@ -82,6 +84,8 @@ module.exports.routes = {
   'POST /api/v1/partenaire/dlfactures/:id': { action: 'partenaire/dl-factures' },
   'POST /api/v1/partenaire/:idpartenaire/addImage': { action: 'partenaire/add-image' },
   'POST /api/v1/partenaire/:idpartenaire/addLogo': { action: 'partenaire/add-logo' },
+  'GET /api/v1/partenaire/resetPassword/:id': { action: 'partenaire/reset-password' },
+  'POST /api/v1/partenaire/forgotpassword': { action: 'partenaire/forgot-password' },
 
   // Factures
   'GET /api/v1/factures': { action: 'facture/get-all' },

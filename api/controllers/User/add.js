@@ -203,9 +203,12 @@ module.exports = {
 				templateData: {
 					password: password,
 					// token: newUserRecord.emailProofToken
-					firstName: firstName
+					firstName: firstName,
+					lastName: lastName,
+					idClient: idclient,
+					emailAddress: newEmailAddress,
 				},
-				from: 'noreply@test.fr'
+				from: 'no-reply@temoanadiving-pass.com'
 			});
 		} else {
 			sails.log.info('Skipping new account email verification... (since `verifyEmailAddresses` is disabled)');

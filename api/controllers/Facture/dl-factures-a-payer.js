@@ -46,7 +46,7 @@ module.exports = {
 		var pdf = require("pdf-creator-node");
 		const fspromise = require('fs').promises
 
-		console.log('CONTROLLER: Partenaire | DL facture ==> ' + id);
+		console.log('CONTROLLER: facture | DL facture a payer ==> month ' + month + '' + dayjs(month).format('MMMM'));
 
 
 		// month = dayjs(month).subtract(6, 'd').valueOf()
@@ -55,13 +55,17 @@ module.exports = {
 
 		var factures = await Facture.find({
 			createdAt: {
-				'>': dayjs(month).subtract(1, 'M').startOf('M').valueOf(),
+				'>': dayjs(month).startOf('M').valueOf(),
 				'<=': dayjs(month).endOf('M').valueOf()
 			},
 			recepteur: id
 		}).populate('recepteur').populate('emetteur')
 
 		console.log('factures', factures);
+		if (factures.length === 0) {
+			return 'pas de factures'
+		}
+
 
 
 		const PDFDONES = Promise.all(_.map(factures, async element => {
@@ -96,7 +100,7 @@ module.exports = {
 			datas.totalPrice = Number(datas.nbPlongeeResident) * Number(sails.config.custom.prixUnitaireResidantHT) + Number(datas.nbPlongeeTouriste) * Number(sails.config.custom.prixUnitaireTouristeHT)
 
 			datas.tva = Math.round((datas.totalPrice * sails.config.custom.tva)).toString().replace(/(\d)(?=(\d{3})+(?!\d))/g, "$1 ");
-			datas.tvas = Math.round((datas.totalPrice * sails.config.custom.tva)).toString().replace(/(\d)(?=(\d{3})+(?!\d))/g, "$1 ");
+			datas.tvas = Math.round((datas.totalPrice * sails.config.custom.tvas)).toString().replace(/(\d)(?=(\d{3})+(?!\d))/g, "$1 ");
 			datas.totalPriceHT = Math.round(datas.totalPrice).toString().replace(/(\d)(?=(\d{3})+(?!\d))/g, "$1 ")
 			datas.totalPriceTTC = Math.round((datas.totalPrice + (datas.totalPrice * sails.config.custom.tva) + (datas.totalPrice * sails.config.custom.tvas))).toString().replace(/(\d)(?=(\d{3})+(?!\d))/g, "$1 ")
 

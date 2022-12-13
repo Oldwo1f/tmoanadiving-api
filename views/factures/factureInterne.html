@@ -57,6 +57,7 @@
 		text-align: left;
 		float: left;
 	}
+
 	.adresseclient {
 
 		color: black;
@@ -65,7 +66,7 @@
 		margin-top: 5px;
 		line-height: 16px;
 		text-align: left;
-		float: left;
+		float: right;
 	}
 
 	.adresseclient h {
@@ -101,9 +102,8 @@
 		color: black;
 		margin: 25px;
 		line-height: 16px;
-		float: right;
-		text-align: right;
-
+		display: flex;
+		justify-content: space-between;
 	}
 
 	.clearfix {
@@ -167,6 +167,7 @@
 		font-weight: bold;
 		font-size: 16px;
 	}
+
 	.tva {
 		margin-right: 20px;
 		float: right;
@@ -180,25 +181,29 @@
 		<div class="logo">
 		</div>
 		<div class="head">
+			<div class="left">
+				<div class="adresse">
+					<h2 class="partName">{{d.club.name}}</h2>
+					{{d.club.city}}<br>
+					{{d.club.island}}<br>
+					Numéro Tahiti : {{d.club.numeroTahiti}} <br>
+					Tel: {{d.club.phone}} <br>
+					Email: {{d.club.email}}
+				</div>
+			</div>
+			<div class="right"></div>
 			Numéro de facture : {{d.numerofacture}}<br>
 			Date : {{d.createdAt}}<br>
-			
+
 		</div>
 		<div class="clearfix"></div>
 		<div class="adresses">
-			<div class="adresse">
-				<h2 class="partName">{{d.club.name}}</h2>
-				{{d.club.city}}<br>
-				{{d.club.island}}<br>
-				Numéro Tahiti : {{d.club.numeroTahiti}}
-				Tel: {{d.club.phone}} <br>
-				Email: {{d.club.email}}
-			</div>
+
 			<div class="adresseclient">
 				<h3 class="partName">{{d.clubReceveur.name}}</h3>
 				{{d.clubReceveur.city}}<br>
 				{{d.clubReceveur.island}}<br>
-				Numéro Tahiti : {{d.clubReceveur.numeroTahiti}}
+				Numéro Tahiti : {{d.clubReceveur.numeroTahiti}} <br>
 				Tel: {{d.clubReceveur.phone}} <br>
 				Email: {{d.clubReceveur.email}}
 			</div>
@@ -216,14 +221,14 @@
 					<th style="width:100px;">Prix Total</th>
 				</tr>
 				<tr>
-					<td colspan="3">Plongée tarif résident</td>
+					<td colspan="3">Plongée tarif résident (RES)</td>
 					<td>{{d.nbPlongeeResident}}</td>
 					<!-- <td>1 ans à partir du {{d.dateeffect}}</td> -->
 					<td style="white-space:nowrap;">{{d.prixunitresident}}</td>
 					<td style="white-space:nowrap;">{{d.prixtotalresident}}</td>
 				</tr>
 				<tr>
-					<td colspan="3">Plongée tarif touriste</td>
+					<td colspan="3">Plongée tarif non-résident (INTER)</td>
 					<td>{{d.nbPlongeeTouriste}}</td>
 					<!-- <td>1 ans à partir du {{d.dateeffect}}</td> -->
 					<td style="white-space:nowrap;">{{d.prixunittouriste}}</td>
@@ -234,9 +239,9 @@
 		<!-- <small>Tva non applicable</small> -->
 		<div class="tva">Total HT: {{d.totalPriceHT}} XPF</div>
 		<div class="clearfix"></div>
-		<div class="tva">TVA ( 5% ) :  {{d.tva}} XPF</div>
+		<div class="tva">TVA ( 5% ) : {{d.tva}} XPF</div>
 		<div class="clearfix"></div>
-		<div class="tva">Taxe social ( 1% ) :  {{d.tvas}} XPF</div>
+		<div class="tva">Taxe social ( 1% ) : {{d.tvas}} XPF</div>
 		<div class="clearfix"></div>
 		<div class="total">Total TTC : {{d.totalPriceTTC}} XPF</div>
 		<!-- <ul>

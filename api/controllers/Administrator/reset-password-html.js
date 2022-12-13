@@ -37,7 +37,7 @@ module.exports = {
 
 
 	fn: async function ({ id, datas }) {
-		console.log('CONTROLLER: User | update ==> ', id);
+		console.log('CONTROLLER: User | resetPassword ==> ', id);
 		const { customAlphabet } = require('nanoid')
 		const nanoid = customAlphabet('abcdefghijklmnopqrstuvwxyz', 6)
 		const password = nanoid()
@@ -59,20 +59,12 @@ module.exports = {
 			templateData: {
 				password: password,
 				// token: newUserRecord.emailProofToken
-				// firstName: record.firstName
+				firstName: record.firstName
 			},
 			from: 'no-reply@temoanadiving-pass.com'
 		});
 
-		try {
-			const template = await sails.renderView('password-confirm-recovery', { data: { nodata: 'nodatas' }, layout: 'layouts/layout-email' })
-			return this.res.status(200).send(template)
-		} catch (e) {
-			console.log('ELSE', e)
-			return e
-
-		}
-
+		return record
 
 	}
 

@@ -153,12 +153,21 @@ module.exports = {
 		}
 		emailDatas.html = emailContent;
 
+		// const transport = nodemailer.createTransport({
+		// 	host: 'smtp.mailtrap.io',
+		// 	port: 2525,
+		// 	auth: {
+		// 		user: '4d751c99d64101',
+		// 		pass: '47edc33501e177'
+		// 	}
+		// })
+
 		const transport = nodemailer.createTransport({
-			host: 'smtp.mailtrap.io',
-			port: 2525,
+			host: 'ms1.isc-consulting.info',
+			port: 587,
 			auth: {
-				user: '4d751c99d64101',
-				pass: '47edc33501e177'
+				user: 'temoanadiving-pass',
+				pass: 'er5BLpLe3x2TJdm7'
 			}
 		})
 

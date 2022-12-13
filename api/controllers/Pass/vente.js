@@ -117,6 +117,56 @@ module.exports = {
 			.fetch();
 
 		await Partenaire.updateOne(clubId).set({ numeroFactureClient: club.numeroFactureClient + 1 })
+		const partenaire = await Partenaire.findOne(clubId)
+		console.log('partenaire:', partenaire)
+
+
+		await User.findOne(userid).then(
+			async (user) => {
+				try {
+					await sails.helpers.email.sendHtmlEmail.with({
+						to: user.emailAddress,
+						subject: 'Pass Temoana diving',
+						layout: 'layout-email',
+						template: 'email-pass-achat',
+						templateData: {
+							firstName: user.firstName,
+							lastName: user.lastName,
+							idClient: user.idclient,
+							emailAddress: user.emailAddress,
+							nbplongee: nbplongee,
+							dateeffect: dayjs(dateeffect).format('DD/MM/YYYY'),
+
+						},
+						from: 'no-reply@temoanadiving-pass.com'
+					});
+					console.log('partenaire:', partenaire)
+					await sails.helpers.email.sendHtmlEmail.with({
+						to: partenaire.email,
+						subject: 'Pass Temoana diving',
+						layout: 'layout-email',
+						template: 'email-auto-congratz',
+						templateData: {
+							firstName: user.firstName,
+							lastName: user.lastName,
+							clubname: partenaire.name,
+							// idClient: user.idclient,
+							// emailAddress: user.emailAddress,
+							nbplongee: newPass.nbplongee,
+							dateeffect: dayjs(dateeffect).format('DD/MM/YYYY'),
+							date: dayjs().format('DD/MM/YYYY'),
+
+						},
+						from: 'no-reply@temoanadiving-pass.com'
+					});
+				} catch (error) {
+					console.log(error);
+				}
+			}
+		)
+
+
+
 
 		console.log(newPass);
 		// console.log(updateduser);

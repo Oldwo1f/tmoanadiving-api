@@ -1,0 +1,7 @@
+PATCH http://localhost:40064/api/v1/user/resetPassword/6317a0acd26eb52e1f5d0410
+
+###
+GET https://api.temoanadiving-pass.com/api/v1/facture/everymonth
+
+###
+GET http://localhost:40065/api/v1/facture/everymonth

@@ -43,7 +43,7 @@ module.exports = {
 		var allPlongeesThisMonth = await Plongee.find({
 			createdAt: {
 				'>': dayjs(month).subtract(1, 'M').startOf('M').valueOf(),
-				'<=': dayjs(month).endOf('M').valueOf()
+				'<=': dayjs(month).subtract(1, 'M').endOf('M').valueOf()
 			}
 		})
 
@@ -154,6 +154,25 @@ module.exports = {
 			// factures.push(result)
 
 		}));
+		const partenaires = await Partenaire.find()
+
+		await Promise.all(_.map(partenaires, async (elem, k) => {
+
+			console.log('elem', elem);
+
+			// await sails.helpers.email.sendHtmlEmail.with({
+			// 	to: elem.email,
+			// 	subject: 'Pass Temoana diving',
+			// 	layout: 'layout-email',
+			// 	template: 'email-every-month',
+			// 	templateData: {
+			// 		month: dayjs().subtract(1, 'month').format('MMMM'),
+
+			// 	},
+			// 	from: 'no-reply@temoanadiving-pass.com'
+			// });
+
+		}))
 
 		return 'OK'
 
